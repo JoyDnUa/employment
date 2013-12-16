@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS employment CHARACTER SET utf8 COLLATE utf8_bin;
 USE `employment`;
-GRANT ALL PRIVILEGES ON employment.* TO 'root'@'localhost' IDENTIFIED BY '1234';
+GRANT ALL PRIVILEGES ON employment.* TO 'root'@'localhost' IDENTIFIED BY 'admin';
 
 DROP TABLE IF EXISTS `users_skills`;
 DROP TABLE IF EXISTS `users`;
