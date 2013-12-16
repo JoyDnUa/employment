@@ -8,9 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PrePersist;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
+
+import org.apache.commons.lang.builder.ToStringBuilder;
 
 @Entity
 @Table(name="users")
@@ -18,13 +23,6 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = -3530976446812840890L;
 	
-    public static User create(String username, Date lastUpdate) {
-        User user = new User();
-        user.setUsername(username);
-        user.setLastUpdate(lastUpdate);
-        return user;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -45,13 +43,46 @@ public class User implements Serializable {
     private int workload;
     
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "last_update")
-    private Date lastUpdate;
+    @Column(name = "creation_time", nullable = false)
+    private Date creationTime;
 
-	public User() {
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "modification_time", nullable = false)
+    private Date modificationTime;
+    
+    @Version
+    private Integer version = 0;
+
+    public User() {
 	}
 
-	public Long getId() {
+    /**
+     * Creates the new user with the given name.
+     */
+    public static User create(String username) {
+        User user = new User();
+        user.setUsername(username);
+        return user;
+    }
+
+    @PreUpdate
+    public void preUpdate() {
+    	this.modificationTime = new Date();
+    }
+    
+    @PrePersist
+    public void prePersist() {
+        Date now = new Date();
+        this.creationTime = now;
+        this.modificationTime = now;
+    }
+
+    @Override
+    public String toString() {
+        return ToStringBuilder.reflectionToString(this);
+    }
+
+    public Long getId() {
 		return id;
 	}
 
@@ -99,13 +130,28 @@ public class User implements Serializable {
 		this.workload = workload;
 	}
 
-	public Date getLastUpdate() {
-		return lastUpdate;
+	public Date getCreationTime() {
+		return creationTime;
 	}
 
-	public void setLastUpdate(Date lastUpdate) {
-		this.lastUpdate = lastUpdate;
+	public void setCreationTime(Date creationTime) {
+		this.creationTime = creationTime;
 	}
-    
+
+	public Date getModificationTime() {
+		return modificationTime;
+	}
+
+	public void setModificationTime(Date modificationTime) {
+		this.modificationTime = modificationTime;
+	}
+
+	public Integer getVersion() {
+		return version;
+	}
+
+	public void setVersion(Integer version) {
+		this.version = version;
+	}
 
 }

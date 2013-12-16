@@ -13,14 +13,17 @@ CREATE TABLE `users` (
   `lastname` varchar(30) COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(50) COLLATE utf8_bin DEFAULT NULL,
   `workload` tinyint(3) DEFAULT NULL,
-  `last_update` datetime NOT NULL,
+  `creation_time` datetime NOT NULL,
+  `modification_time` datetime NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `skills` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `name` varchar(100) COLLATE utf8_bin NOT NULL,
-  PRIMARY KEY (`id`)
+  `creation_time` datetime NOT NULL,
+  `modification_time` datetime NOT NULL,
+   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 CREATE TABLE `users_skills` (
@@ -29,8 +32,8 @@ CREATE TABLE `users_skills` (
   `id_skill` bigint(20) unsigned NOT NULL,
   `level` tinyint(3) unsigned DEFAULT NULL,
   `time_in_use` float unsigned DEFAULT NULL,
-  `last_update` datetime NOT NULL,
-  `added` datetime NOT NULL,
+  `creation_time` datetime NOT NULL,
+  `modification_time` datetime NOT NULL,
   `wish` tinyint(3) unsigned DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `id_user_idx` (`id_user`),
