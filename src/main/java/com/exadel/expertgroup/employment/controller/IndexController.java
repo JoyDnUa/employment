@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.exadel.expertgroup.employment.web.ViewUtil;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/**")
 public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
