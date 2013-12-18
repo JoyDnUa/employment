@@ -5,15 +5,32 @@
 <head th:include="fragments/common :: head" />
 
 <body>
-    <div th:include="fragments/common :: navbar"></div>
+	<div th:include="fragments/common :: navbar"></div>
 
-	<br> </br>
-	<br> </br>
-	<br> </br>
-	<br> </br>
-	<h4 th:text="${currentUser}"></h4>
-     
-    <div th:include="fragments/common :: scripts"></div>
+	<h2>List of User's Skills</h2>
+
+	<div class="skillslist" th:unless="${userSkills.isEmpty()}">
+
+		<table>
+			<thead>
+				<tr>
+					<th th:text="#{userskill.skill}">Skill</th>
+					<th th:text="#{userskill.level}">Level</th>
+					<th th:text="#{userskill.timeInUse}">Time in use</th>
+					<th th:text="#{userskill.wish}">Wish</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="us : ${userSkills}">
+					<td th:text="${us.skill}" />
+					<td th:text="${us.level}" />
+					<td th:text="${us.timeInUse}" />
+					<td th:text="${us.wish}? #{bool.true} : #{bool.false}">yes</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div th:include="fragments/common :: scripts"></div>
 </body>
 
 </html>
