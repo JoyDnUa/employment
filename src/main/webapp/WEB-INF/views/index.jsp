@@ -18,8 +18,6 @@
 
 				<div>
 					<p>You have successfully deployed a Spring MVC web application.</p>
-					<h3>Your application can run on:</h3>
-					<img src="<c:url value="/static/resources/gfx/dualbrand_as7eap.png"/>"/>
 				</div>
 
 			</div>
