@@ -16,5 +16,6 @@
 	    <bean id="messageSource"
         class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
         p:basenames="resources/messages" />
-	
+        
+	<bean class="com.exadel.expertgroup.employment.context.LoginListener" />
 </beans>
