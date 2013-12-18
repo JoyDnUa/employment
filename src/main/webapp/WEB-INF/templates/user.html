@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:include="fragments/common :: head" />
+
+<body>
+    <div th:include="fragments/common :: navbar"></div>
+
+	<br> </br>
+	<br> </br>
+	<br> </br>
+	<br> </br>
+	<h4 th:text="${currentUser}"></h4>
+     
+    <div th:include="fragments/common :: scripts"></div>
+</body>
+
+</html>
