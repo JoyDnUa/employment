@@ -12,7 +12,7 @@ public class IndexController {
 
     @RequestMapping(method = RequestMethod.GET)
     public String index() {
-        return ViewUtil.INDEX;
+        return ViewUtil.LOGIN;
     }	
 	
 }
