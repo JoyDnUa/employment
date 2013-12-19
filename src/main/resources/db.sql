@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS `skills`;
 
 CREATE TABLE `users` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `usersname` varchar(30) COLLATE utf8_bin NOT NULL,
+  `username` varchar(30) COLLATE utf8_bin NOT NULL,
   `firstname` varchar(30) COLLATE utf8_bin DEFAULT NULL,
   `lastname` varchar(30) COLLATE utf8_bin DEFAULT NULL,
   `email` varchar(50) COLLATE utf8_bin DEFAULT NULL,
