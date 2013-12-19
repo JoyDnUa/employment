@@ -6,6 +6,8 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -41,8 +43,9 @@ public class UserSkill implements Serializable  {
     @JoinColumn(name = "id_skill", nullable = false)
     private Skill skill;
     
-    @Column(name = "level")
-    private int level;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "level", length = Level.LENGTH_MAX)
+    private Level level;
     
     @Column(name = "time_in_use")
     private float timeInUse;
@@ -112,11 +115,11 @@ public class UserSkill implements Serializable  {
 		this.skill = skill;
 	}
 
-	public int getLevel() {
+	public Level getLevel() {
 		return level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Level level) {
 		this.level = level;
 	}
 
