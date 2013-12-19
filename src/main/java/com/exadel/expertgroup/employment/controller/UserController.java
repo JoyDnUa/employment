@@ -38,7 +38,8 @@ public class UserController {
 		LOGGER.debug("Name in spring {}.", principal.getName());
 		User user = usersService.findByUsername(principal.getName());
 		if(user == null){
-			user = User.create(principal.getName());
+//			user = User.create(principal.getName());
+			LOGGER.debug("User {} not found.", principal.getName());
 		}
 		//LOGGER.debug("Name from DB {}.", usersService.findByUsername(principal.getName()).getUsername());
         return user;

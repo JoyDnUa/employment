@@ -24,13 +24,12 @@ public class UsersService {
         if (user == null) {
             LOGGER.debug("Create new user {}.", username);
             user = User.create(username);
-            user = usersRepository.saveAndFlush(user);
         }
+        user = usersRepository.saveAndFlush(user);
 	}
 	
 	public User findByUsername(String username) {
-        User user = usersRepository.findByUsername(username);
-        return user;
+		return usersRepository.findByUsername(username);
     }
 
 }
