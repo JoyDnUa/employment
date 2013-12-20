@@ -1,10 +1,13 @@
 package com.exadel.expertgroup.employment.model;
 
 import java.io.Serializable;
+import java.text.MessageFormat;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -40,8 +43,9 @@ public class User implements Serializable {
     @Column(name = "mail", length = 50)
     private String mail;
 
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "workload")
-    private int workload;
+    private Workload workload;
     
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creation_time", nullable = false)
@@ -123,11 +127,11 @@ public class User implements Serializable {
 		this.mail = mail;
 	}
 
-	public int getWorkload() {
+	public Workload getWorkload() {
 		return workload;
 	}
 
-	public void setWorkload(int workload) {
+	public void setWorkload(Workload workload) {
 		this.workload = workload;
 	}
 
@@ -155,4 +159,14 @@ public class User implements Serializable {
 		this.version = version;
 	}
 
+	
+    public String getReadableName() {
+        if ((firstname==null)||(firstname.isEmpty())
+        		|| (lastname==null)||(lastname.isEmpty())) {
+            return username;
+        }
+
+        return MessageFormat.format("{0} {1}", firstname, lastname);
+    }
+	
 }

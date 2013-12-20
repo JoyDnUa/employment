@@ -2,10 +2,47 @@ package com.exadel.expertgroup.employment.model;
 
 public enum Level {
 
+	/**
+	 * If an employee heard or read about it
+	 */
 	NONE("NONE"),
-	NOVICE("NOVICE"),
-	INTERMEDIATE("INTERMEDIATE"),
-	ADVANCED("ADVANCED"),
+	
+	/**
+	 * If an employee: 
+	 * Doesn't have an expert level of theoretical knowledge in that particular skill, 
+	 * Has completed at least two major projects with key requirements for that particular skill 
+	 * OR 
+	 * Has 2 or more years of recent experience in that particular skill
+	 */
+	NOVICE("NOVICE"), 
+	
+	/**
+	 * If an employee:
+	 * Has a low level of theoretical knowledge in that particular skill,
+	 * Has completed at least two major projects with key requirements for that particular skill
+	 * OR
+	 * Has 2 or more years of recent experience in that particular skill
+	 */
+	INTERMEDIATE("INTERMEDIATE"), 
+	
+	/**
+	 * If an employee: Has an expert level of theoretical knowledge in that particular skill,
+	 * Has completed at least two major projects with key requirements for that particular skill
+	 * OR
+	 * Has an expert level theoretical knowledge in that particular skill,
+	 * Has 2 or more years of recent experience in that particular skill
+	 * OR
+	 * Has completed at least two major projects with key requirements for that particular skill,
+	 * Has two or more years of recent experience in that particular skill
+	 */
+	ADVANCED("ADVANCED"), 
+	
+	/**
+	 * If an employee:
+	 * Has an expert level of theoretical knowledge in that particular skill,
+	 * Has completed at least two major projects with key requirements for that particular skill,
+	 * Has 2 or more years of recent experience in that particular skill
+	 */
 	EXPERT("EXPERT");
 	
     public static final Level[] ALL = { NONE, NOVICE, INTERMEDIATE, ADVANCED, EXPERT };
