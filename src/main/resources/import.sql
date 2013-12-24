@@ -1,2 +1,3 @@
--- You can use this file to load seed data into the database using SQL statements
-/*insert into Member (id, name, email, phone_number) values (0, 'John Smith', 'john.smith@mailinator.com', '2125551212')*/ 
+insert into skills (id, name, creation_time, modification_time) values (1, 'Java', '2004-01-01 00:00:01', '2008-01-01 00:00:01');
+insert into skills (id, name, creation_time, modification_time) values (2, 'CSS', '2004-01-01 00:00:01', '2008-01-01 00:00:01');
+insert into skills (id, name, creation_time, modification_time) values (3, 'JavaScript','2004-01-01 00:00:01', '2008-01-01 00:00:01');

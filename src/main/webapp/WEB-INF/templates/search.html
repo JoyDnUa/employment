@@ -3,12 +3,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
   <head>
-    <title>Spring Thyme Seed Starter Manager</title>
+  	 <head th:include="fragments/common :: head" />
+     <!--   <title>Spring Thyme Seed Starter Manager</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <link rel="stylesheet" type="text/css" media="all" href="../resources/css/stsm.css" th:href="@{/css/stsm.css}"/>
+  <link rel="stylesheet" type="text/css" media="all" href="/resources/css/stsm.css" th:href="@{/resources/css/stsm.css}"/>-->
   </head>
 
   <body>
+  	<div th:include="fragments/common :: navbar"></div>
 
     <div>
     
@@ -22,20 +24,18 @@
 
           <div>
             <label for="Skill" th:text="#{app.search.skill}">Skill</label>
-            <select multiple="multiple">
+           <!--  <select multiple="multiple">
               <option >Tomcat</option>
               <option >JAVA</option>
-            </select>
-            <!--  
+            </select>-->
+             
             <select id="Skills" 
             name="Skills" 
-            multiple="multiple" 
-            th:field="*{Skills}">
-
-		    <option th:each="skill : *{allElements}" 
+            multiple="multiple">
+		    <option th:each="skill : ${skills}" 
 		                th:value="${skill.id}" 
 		                th:text="${skill.name}"></option>
-		  </select>-->
+		  </select>
           </div>
           
           <div class="submit">
@@ -47,6 +47,7 @@
       </form>
         
     </div>
+    <div th:include="fragments/common :: scripts"></div>
 
   </body>
 </html>
