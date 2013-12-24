@@ -5,7 +5,7 @@ public enum Level {
 	/**
 	 * If an employee heard or read about it
 	 */
-	NONE("NONE"),
+	NONE("None"),
 	
 	/**
 	 * If an employee: 
@@ -14,7 +14,7 @@ public enum Level {
 	 * OR 
 	 * Has 2 or more years of recent experience in that particular skill
 	 */
-	NOVICE("NOVICE"), 
+	NOVICE("Novice"), 
 	
 	/**
 	 * If an employee:
@@ -23,7 +23,7 @@ public enum Level {
 	 * OR
 	 * Has 2 or more years of recent experience in that particular skill
 	 */
-	INTERMEDIATE("INTERMEDIATE"), 
+	INTERMEDIATE("Intermediate"), 
 	
 	/**
 	 * If an employee: Has an expert level of theoretical knowledge in that particular skill,
@@ -35,7 +35,7 @@ public enum Level {
 	 * Has completed at least two major projects with key requirements for that particular skill,
 	 * Has two or more years of recent experience in that particular skill
 	 */
-	ADVANCED("ADVANCED"), 
+	ADVANCED("Advanced"), 
 	
 	/**
 	 * If an employee:
@@ -43,7 +43,7 @@ public enum Level {
 	 * Has completed at least two major projects with key requirements for that particular skill,
 	 * Has 2 or more years of recent experience in that particular skill
 	 */
-	EXPERT("EXPERT");
+	EXPERT("Expert");
 	
     public static final Level[] ALL = { NONE, NOVICE, INTERMEDIATE, ADVANCED, EXPERT };
     

@@ -26,4 +26,9 @@ public class UsersSkillService {
     public List<UserSkill> findBySkill(Skill skill) {
         return usersSkillsRepository.findBySkill(skill);
     }
+    
+    public UserSkill save(UserSkill userSkill) {
+        return this.usersSkillsRepository.saveAndFlush(userSkill);
+    }
+
 }

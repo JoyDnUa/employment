@@ -9,14 +9,14 @@
 
 	<h2>List of User's Skills</h2>
 
-	<div class="skillslist" th:unless="${userSkills.isEmpty()}">
+	<div class="skillslist" th:unless="${#lists.isEmpty(userSkills)}">
 
 		<table>
 			<thead>
 				<tr>
 					<th th:text="#{userskill.skill}">Skill</th>
 					<th th:text="#{userskill.level}">Level</th>
-					<th th:text="#{userskill.timeInUse}">Time in use</th>
+					<th th:text="#{userskill.period}">Period of using</th>
 					<th th:text="#{userskill.wish}">Wish</th>
 				</tr>
 			</thead>
@@ -24,7 +24,7 @@
 				<tr th:each="us : ${userSkills}">
 					<td th:text="${us.skill}" />
 					<td th:text="${us.level}" />
-					<td th:text="${us.timeInUse}" />
+					<td th:text="${us.period}" />
 					<td th:text="${us.wish}? #{bool.true} : #{bool.false}">yes</td>
 				</tr>
 			</tbody>
@@ -32,6 +32,50 @@
 	</div>
 	
 	<div>
+      <h2 th:text="#{app.userskill.new}">Add new Skill</h2>
+
+      <form action="#" th:action="@{/user}" th:object="${userSkill}" method="post">
+    
+        <fieldset>
+          
+          <legend th:text="#{userskill.data}">Skill information</legend>
+
+          <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+            <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+          </ul>
+
+          
+          <div>
+            <label for="skill" th:text="#{userskill.skill}">Skill</label>
+            <select th:field="*{skill}">
+              <option th:each="skill : ${allSkills}" th:value="${skill}" th:text="${skill.name}"/>
+            </select>
+          </div>
+          <div>
+            <label for="level" th:text="#{userskill.level}">Level</label>
+            <select th:field="*{level}">
+              <option th:each="level : ${allLevels}" th:value="${level}" th:text="${level.name}"/>
+            </select>
+          </div>
+          <div>
+            <label for="period" th:text="#{userskill.period}">Period of using</label>
+            <select th:field="*{period}">
+              <option th:each="period : ${allPeriods}" th:value="${period}" th:text="${period}"/>
+            </select>
+          </div>
+          <div>
+            <label th:for="${#ids.next('wish')}" th:text="#{userskill.wish}">Wish</label>
+            <input type="checkbox" th:field="*{wish}" />
+          </div>
+    
+          <div class="submit">
+            <button type="submit" name="save" th:text="#{userskill.create}">Add new skill</button>    
+          </div>
+        
+        </fieldset>
+          
+      </form>
+        
 	
 	</div>
 	

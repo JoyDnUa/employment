@@ -47,8 +47,8 @@ public class UserSkill implements Serializable  {
     @Column(name = "level", length = Level.LENGTH_MAX)
     private Level level;
     
-    @Column(name = "time_in_use")
-    private float timeInUse;
+    @Column(name = "period")
+    private float period;
     
     @Column(name = "wish")
     private boolean wish;
@@ -67,10 +67,10 @@ public class UserSkill implements Serializable  {
 	public UserSkill() {
 	}
 
-	public static UserSkill create(User user, Skill skill, Date added){
+	public static UserSkill create(User user){
 		UserSkill userSkill = new UserSkill();
 		userSkill.setUser(user);
-		userSkill.setSkill(skill);
+		//userSkill.setSkill(skill);
 		return userSkill;
 	}
 	
@@ -123,12 +123,12 @@ public class UserSkill implements Serializable  {
 		this.level = level;
 	}
 
-	public float getTimeInUse() {
-		return timeInUse;
+	public float getPeriod() {
+		return period;
 	}
 
-	public void setTimeInUse(float timeInUse) {
-		this.timeInUse = timeInUse;
+	public void setPeriod(float period) {
+		this.period = period;
 	}
 
 	public boolean isWish() {
