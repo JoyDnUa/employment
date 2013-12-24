@@ -1,6 +1,7 @@
 package com.exadel.expertgroup.employment.controller;
 
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -13,8 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.exadel.expertgroup.employment.model.Level;
+import com.exadel.expertgroup.employment.model.Skill;
 import com.exadel.expertgroup.employment.model.User;
 import com.exadel.expertgroup.employment.model.UserSkill;
+import com.exadel.expertgroup.employment.model.Workload;
+import com.exadel.expertgroup.employment.service.SkillsService;
 import com.exadel.expertgroup.employment.service.UsersService;
 import com.exadel.expertgroup.employment.service.UsersSkillService;
 import com.exadel.expertgroup.employment.web.ViewUtil;
@@ -28,11 +33,30 @@ public class UserController {
             .getLogger(UserController.class);
 
 	@Autowired
+	protected SkillsService skillsService;
+	
+	@Autowired
 	protected UsersSkillService usersSkillService;
 	
 	@Autowired
 	protected UsersService usersService;
 	
+    @ModelAttribute("allLevels")
+    public List<Level> populateLevels() {
+        return Arrays.asList(Level.ALL);
+    }
+    
+    @ModelAttribute("allWorkload")
+    public List<Workload> populateWorkload() {
+        return Arrays.asList(Workload.ALL);
+    }
+    
+	@ModelAttribute("allSkills")
+    public List<Skill> skillsList() {
+		return skillsService.findAll();
+    }
+
+    
 	@ModelAttribute(ViewUtil.CURRENT_USER_ATTR)
     public User currentUser(Principal principal) {
 		LOGGER.debug("Name in spring {}.", principal.getName());

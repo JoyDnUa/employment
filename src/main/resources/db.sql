@@ -31,7 +31,7 @@ CREATE TABLE `users_skills` (
   `id_user` bigint(20) unsigned NOT NULL,
   `id_skill` bigint(20) unsigned NOT NULL,
   `level` varchar(15) COLLATE utf8_bin DEFAULT NULL,
-  `time_in_use` float unsigned DEFAULT NULL,
+  `period` float unsigned DEFAULT NULL,
   `creation_time` datetime NOT NULL,
   `modification_time` datetime NOT NULL,
   `wish` tinyint(3) unsigned DEFAULT NULL,
