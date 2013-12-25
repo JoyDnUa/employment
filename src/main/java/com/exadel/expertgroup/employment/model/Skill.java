@@ -64,7 +64,7 @@ public class Skill implements Serializable {
 
     @Override
     public String toString() {
-        return ToStringBuilder.reflectionToString(this);
+        return this.getName();
     }
 
 	public Long getId() {

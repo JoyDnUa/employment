@@ -40,15 +40,15 @@
           
           <legend th:text="#{userskill.data}">Skill information</legend>
 
-          <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+      <!--     <ul th:if="${#fields.hasErrors('*')}" class="errorlist">
             <li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
           </ul>
-
+	 -->
           
           <div>
             <label for="skill" th:text="#{userskill.skill}">Skill</label>
-            <select th:field="*{skill}">
-              <option th:each="skill : ${allSkills}" th:value="${skill}" th:text="${skill.name}"/>
+            <select th:field="*{skill}" name="skill">
+              <option th:each="skill : ${allSkills}" th:value="${skill}" th:text="${skill.name}" />
             </select>
           </div>
           <div>

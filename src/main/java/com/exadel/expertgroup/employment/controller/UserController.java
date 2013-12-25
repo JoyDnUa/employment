@@ -92,12 +92,12 @@ public class UserController {
     }
 
     @RequestMapping(params={"save"}, method = RequestMethod.POST)
-    public String saveUserSkill(@ModelAttribute("userSkill") UserSkill userSkill, final BindingResult bindingResult, final ModelMap model) {
+    public String saveUserSkill(@ModelAttribute("userSkill") final UserSkill userSkill, final BindingResult bindingResult, final ModelMap model) {
         if (bindingResult.hasErrors()) {
             return ViewUtil.USER;
         }
         this.usersSkillService.save(userSkill);
-        //model.clear();
+        model.clear();
         return "redirect:/user";
     }    
 }
