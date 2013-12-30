@@ -5,6 +5,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.exadel.expertgroup.employment.context.LoginListener;
 import com.exadel.expertgroup.employment.model.User;
@@ -27,7 +28,8 @@ public class UsersService {
         }
         user = usersRepository.saveAndFlush(user);
 	}
-	
+
+	@Transactional(readOnly = true)
 	public User findByUsername(String username) {
 		return usersRepository.findByUsername(username);
     }
